@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Cities</string>
+    <string name="list">Список городов</string>
+    <string name="cities">Города</string>
+    <string name="nothing_selected">Ничего не выбрано</string>
+    <string name="new_cities_list">Новый список городов</string>
+    <string name="list_short_name">Короткое имя списка</string>
+    <string name="list_full_name">Длинное имя списка</string>
+    <string name="list_color">Цвет списка</string>
+    <string name="ok">ОК</string>
+    <string name="cancel">Отмена</string>
+
+    <string name="fill_short_name">Заполните короткое название</string>
+    <string name="fill_full_name">Заполните длинное название</string>
+    <string name="choose_cities">Выберите города</string>
+</resources>
