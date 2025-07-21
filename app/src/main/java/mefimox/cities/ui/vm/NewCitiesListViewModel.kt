@@ -15,11 +15,11 @@ import mefimox.cities.domain.models.emptyCitiesList
 import mefimox.cities.domain.usecases.GetAllCities
 import mefimox.cities.domain.usecases.UpdateInsertCitiesList
 import mefimox.cities.ui.events.NewCitiesListEvents
-import mefimox.cities.ui.messages.messageFlow
 import mefimox.cities.ui.navigation.Destination
 import mefimox.cities.ui.navigation.navigationFlow
 import javax.inject.Inject
 import mefimox.cities.R
+import mefimox.cities.ui.messages.MessageFlow
 
 @HiltViewModel
 class NewCitiesListViewModel @Inject constructor(
@@ -59,16 +59,16 @@ class NewCitiesListViewModel @Inject constructor(
     }
 
     private suspend fun validateInput(): Boolean {
-        if (checkedCities.value.isEmpty()) {
-            messageFlow.emit(R.string.choose_cities)
-            return false
-        }
         if (citiesList.value.shortName.isEmpty()) {
-            messageFlow.emit(R.string.fill_short_name)
+            MessageFlow.emit(R.string.fill_short_name)
             return false
         }
         if (citiesList.value.fullName.isEmpty()) {
-            messageFlow.emit(R.string.fill_full_name)
+            MessageFlow.emit(R.string.fill_full_name)
+            return false
+        }
+        if (checkedCities.value.isEmpty()) {
+            MessageFlow.emit(R.string.choose_cities)
             return false
         }
         return true
@@ -83,13 +83,13 @@ class NewCitiesListViewModel @Inject constructor(
                 cities = checkedCities.value.toList()
             )
             updateInsertCitiesList.invoke(list)
-            navigationFlow.emit(Destination.BACK.route)
+            navigationFlow.emit(Destination.BACK)
         }
     }
 
     private fun onCancel() {
         viewModelScope.launch {
-            navigationFlow.emit(Destination.BACK.route)
+            navigationFlow.emit(Destination.BACK)
         }
     }
 

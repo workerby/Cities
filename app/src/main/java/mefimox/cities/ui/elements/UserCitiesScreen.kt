@@ -39,7 +39,7 @@ import mefimox.cities.R
 import mefimox.cities.domain.models.getListColor
 import mefimox.cities.ui.common.CustomHorizontalDivider
 import mefimox.cities.ui.events.UserCitiesEvent
-import mefimox.cities.ui.messages.messageFlow
+import mefimox.cities.ui.messages.MessageFlow
 import sh.calvin.reorderable.ReorderableItem
 import sh.calvin.reorderable.rememberReorderableLazyListState
 
@@ -164,7 +164,7 @@ private fun BottomBar(citiesList: CitiesList?, onChooseListClick: () -> Unit) {
             contentDescription = stringResource(R.string.list),
             modifier = Modifier
                 .clickable {
-                    coroutineScope.launch { messageFlow.emit(R.string.list) }
+                    coroutineScope.launch { MessageFlow.emit(R.string.list) }
                 }
                 .size(40.dp)
         )

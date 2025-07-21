@@ -60,7 +60,7 @@ fun PanelContent(vm: MainViewModel) {
             colors = allCities.map { getListColor(it.colorId).color },
             onCreate = {
                 coroutineScope.launch {
-                    navigationFlow.emit(Destination.NEW_LIST.route)
+                    navigationFlow.emit(Destination.NEW_LIST)
                 }
             },
             onSelect = {

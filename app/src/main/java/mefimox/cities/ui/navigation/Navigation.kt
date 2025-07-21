@@ -26,10 +26,10 @@ fun Navigation() {
     LaunchedEffect(Unit) {
         launch {
             navigationFlow.collect {
-                if (it == Destination.BACK.route) {
+                if (it == Destination.BACK) {
                     navController.popBackStack()
                 } else {
-                    navController.navigate(it)
+                    navController.navigate(it.route)
                 }
             }
         }

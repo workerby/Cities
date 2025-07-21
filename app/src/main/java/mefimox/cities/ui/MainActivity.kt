@@ -7,7 +7,7 @@ import androidx.activity.compose.setContent
 import androidx.lifecycle.lifecycleScope
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import mefimox.cities.ui.messages.messageFlow
+import mefimox.cities.ui.messages.MessageFlow
 import mefimox.cities.ui.navigation.Navigation
 import mefimox.cities.ui.theme.CitiesTheme
 
@@ -26,7 +26,7 @@ class MainActivity : ComponentActivity() {
 
     private fun observeMessages() {
         lifecycleScope.launch {
-            messageFlow.collect {
+            MessageFlow().collect {
                 Toast.makeText(this@MainActivity, getString(it), Toast.LENGTH_SHORT).show()
             }
         }
